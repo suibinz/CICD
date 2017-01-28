@@ -12,15 +12,21 @@ stage("Build") {
 }
 
 stage("Test") {
-    parallel node {
-        echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#1"
-    }
+    parallel N1: {
 		node {
-        echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#2"
-    }
+        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#1"
+    	}
+	},
+	N2: {
 		node {
-        echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#3"
-    }
+        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#2"
+    	}
+	},
+	N3: }
+		node {
+        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#3"
+    	}
+	}
 }
 
 stage("Deploy") {
