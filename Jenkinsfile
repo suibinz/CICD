@@ -16,16 +16,16 @@ stage("Test") {
 		node("master") {
         	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#1"
     	}
-	},
-	master1: {
-		node("master") {
-        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#2"
-    	}
-	},
-	master1: {
-		node("master") {
-        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#3"
-    	}
+	}
+//	master1: {
+//		node("master") {
+//        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#2"
+//    	}
+//	},
+//	master1: {
+//		node("master") {
+//        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#3"
+//    	}
 	}
 }
 
