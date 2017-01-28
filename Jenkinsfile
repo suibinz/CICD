@@ -5,7 +5,7 @@ stage('SCM') {
     }
 }
 
-stage("Build" {
+stage("Build") {
     node {
         echo "Build#${env.BUILD_ID}:Hello Stage Build"
     }
