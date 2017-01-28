@@ -1,6 +1,7 @@
 node {
     stage("SCM"){
-        echo "Build#${env.BUILD_ID}:Hello Stage SCM"
+        echo "Build#${env.BUILD_ID}:Hello Stage SCM" 
+		env
     }
 }
 
