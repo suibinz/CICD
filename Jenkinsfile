@@ -26,7 +26,7 @@ stage("Test") {
 //		node("master") {
 //        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#3"
 //    	}
-	}
+//	}
 }
 
 stage("Deploy") {
