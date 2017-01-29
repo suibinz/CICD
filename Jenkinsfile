@@ -1,7 +1,7 @@
 stage('SCM') {
     node{
         echo "Build#${env.BUILD_ID}:Hello Stage SCM" 
-		sh "env"
+		sh "env| grep BUILD"
     }
 }
 
