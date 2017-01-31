@@ -1,13 +1,16 @@
 stage('SCM') {
     node{
-        echo "Build#${env.BUILD_ID}:Hello Stage SCM" 
-		sh "env| grep BUILD"
+        def URL = 'https://github.com/suibinz/CICD.git'
+        echo "Build#${env.BUILD_ID}: git fetch: $URL" 
+		git url: URL
     }
 }
 
 stage("Build") {
     node {
         echo "Build#${env.BUILD_ID}:Hello Stage Build"
+        def mvnHome = tool 'M3'
+        sh "$mvnHome/bin/mvn -B verify"
     }
 }
 
