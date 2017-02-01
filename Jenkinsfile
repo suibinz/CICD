@@ -8,10 +8,10 @@ stage('SCM') {
 
 stage("Build") {
     node {
+		def mvnHome = tool 'M3'
 		sh "java -version"
-        sh "mvn -v"
+        sh "$mvnHome/bin/mvn -v"
         echo "Build#${env.BUILD_ID}:Hello Stage Build"
-        def mvnHome = tool 'M3'
         sh "cd CICD/App/simpleMaven && pwd && $mvnHome/bin/mvn -B verify"
     }
 }
