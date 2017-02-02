@@ -44,7 +44,7 @@ stage("Manual Promotion") {
         description: 'Environment', name: 'Signature'], \
         [$class: 'TextParameterDefinition', defaultValue: 'Approver', \
         description: 'Target', name: 'target']])
-        echo ("Env: "+userInput['env'])
+        echo ("Env: "+userInput['Approver'])
         echo ("Target: "+userInput['target'])
     }
 }
