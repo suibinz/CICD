@@ -10,6 +10,7 @@ stage("Build") {
     node {
 		def mvnHome = tool 'M3'
 		sh "java -version"
+		env.JAVA_HOME = tool "JDK"
         sh "$mvnHome/bin/mvn -v"
         echo "Build#${env.BUILD_ID}:Hello Stage Build"
         sh "cd CICD/App/simpleMaven && pwd && $mvnHome/bin/mvn -B verify"
