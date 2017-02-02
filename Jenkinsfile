@@ -17,7 +17,7 @@ stage("Build") {
     }
 }
 
-stage("Test") {
+stage("QA Test") {
     parallel master: {
 		node("master") {
         	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#1"
@@ -33,6 +33,18 @@ stage("Test") {
 //        	echo "Build#${env.BUILD_ID}:Hello Stage Test in Th#3"
 //    	}
 //	}
+}
+
+stage("Manual Promotion") {
+    node {
+        def userInput = input( id: 'userInput', message: 'Pass Build and QA, Promote to Deployment?', \
+        parameters: [[$class: 'TextParameterDefinition', defaultValue: 'Approver', \
+        description: 'Environment', name: 'Signature'], \
+        [$class: 'TextParameterDefinition', defaultValue: 'Approver', \
+        description: 'Target', name: 'target']])
+        echo ("Env: "+userInput['env'])
+        echo ("Target: "+userInput['target'])
+    }
 }
 
 stage("Deploy") {
