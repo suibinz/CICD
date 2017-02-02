@@ -37,16 +37,18 @@ stage("QA Test") {
 
 stage("Manual Promotion") {
     node {
-        step([$class: 'Mailer', recipients: 'suibinzh@gmail.com', sendToIndividuals: true])
-		
-		def userInput = input( id: 'userInput', message: 'Pass Build and QA, Promote to Deployment?', \
-        parameters: [[$class: 'TextParameterDefinition', defaultValue: 'Approver', \
-        description: 'Environment', name: 'Signature'], \
-        [$class: 'TextParameterDefinition', defaultValue: 'Approver', \
+        mail (to: 'suibinzh@gmail.com', \
+        subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) passed QA \
+        awaiting for approval", \
+        body: "Please go to ${env.BUILD_URL}.");
+        def userInput = input( id: 'userInput', message: 'Pass Build and QA, Promote to Deployment?', \
+        parameters: [[$class: 'TextParameterDefinition', defaultValue: 'uat', \
+        description: 'Environment', name: 'env'], \
+        [$class: 'TextParameterDefinition', defaultValue: 'uat1', \
         description: 'Target', name: 'target']])
-        echo ("Env: "+userInput['Approver'])
+        echo ("Env: "+userInput['env'])
         echo ("Target: "+userInput['target'])
-    }
+    }    
 }
 
 stage("Deploy") {
