@@ -42,10 +42,10 @@ stage("Manual Promotion") {
         awaiting for approval", \
         body: "Please go to ${env.BUILD_URL}.");
         def userInput = input( id: 'userInput', message: 'Pass Build and QA, Promote to Deployment?', \
-        parameters: [[$class: 'TextParameterDefinition', defaultValue: 'uat', \
+        parameters: [[$class: 'TextParameterDefinition', defaultValue: 'Approver', \
         description: 'Environment', name: 'env'], \
-        [$class: 'TextParameterDefinition', defaultValue: 'uat1', \
-        description: 'Target', name: 'target']])
+        [$class: 'TextParameterDefinition', defaultValue: 'Approver', \
+        description: 'Target', name: 'Promote Now']])
         echo ("Env: "+userInput['env'])
         echo ("Target: "+userInput['target'])
     }    
