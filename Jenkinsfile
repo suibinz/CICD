@@ -37,7 +37,9 @@ stage("QA Test") {
 
 stage("Manual Promotion") {
     node {
-        def userInput = input( id: 'userInput', message: 'Pass Build and QA, Promote to Deployment?', \
+        step([$class: 'Mailer', recipients: 'suibinzh@gmail.com', sendToIndividuals: true])
+		
+		def userInput = input( id: 'userInput', message: 'Pass Build and QA, Promote to Deployment?', \
         parameters: [[$class: 'TextParameterDefinition', defaultValue: 'Approver', \
         description: 'Environment', name: 'Signature'], \
         [$class: 'TextParameterDefinition', defaultValue: 'Approver', \
