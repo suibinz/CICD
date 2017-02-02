@@ -13,7 +13,7 @@ stage("Build") {
 		env.JAVA_HOME = tool "JDK"
         sh "$mvnHome/bin/mvn -v"
         echo "Build#${env.BUILD_ID}:Hello Stage Build"
-        sh "cd CICD/App/simpleMaven && pwd && $mvnHome/bin/mvn -B verify"
+        sh "ls && pwd && $mvnHome/bin/mvn -f App/simpleMaven/simple-maven-project-with-tests-master -B verify"
     }
 }
 
